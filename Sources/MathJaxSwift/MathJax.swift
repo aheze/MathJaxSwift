@@ -85,7 +85,7 @@ public final class MathJax {
     /// Initializes a new `MathJax` instance.
     ///
     /// - Parameter outputFormats: The preferred output formats.
-    public init(preferredOutputFormats: [OutputFormat] = OutputFormat.allCases) throws {
+    public init(preferredOutputFormats: [OutputFormat] = [.svg]) throws {
         // Make sure we're using the correct MathJax version
         let metadata = try MathJax.metadata()
         guard metadata.version == Constants.expectedMathJaxVersion else {
@@ -107,11 +107,8 @@ public final class MathJax {
     
         // Register our options classes
         try registerClasses([
-            CHTMLOutputProcessorOptions.self,
             SVGOutputProcessorOptions.self,
             TeXInputProcessorOptions.self,
-            MMLInputProcessorOptions.self,
-            AMInputProcessorOptions.self,
             DocumentOptions.self,
             ConversionOptions.self
         ])
@@ -183,6 +180,7 @@ extension MathJax {
     
         // Check to see if the file exists
         guard FileManager.default.isReadableFile(atPath: url.path) else {
+            print("miss \(url)")
             throw MathJaxError.missingBundle(url: url)
         }
     
