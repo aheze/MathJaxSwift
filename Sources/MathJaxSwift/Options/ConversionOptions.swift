@@ -40,10 +40,10 @@ import JavaScriptCore
   // MARK: Default values
   
   public static let defaultDisplay: Bool = true
-  public static let defaultEm: Double = 16
-  public static let defaultEx: Double = 8
+  public static let defaultEm: Double = 60
+  public static let defaultEx: Double = 80
   public static let defaultLineWidth: Double = 100000
-  public static let defaultScale: Double = 1
+  public static let defaultScale: Double = 2
   
   // MARK: Properties
   
